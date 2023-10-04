@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uhr</title>
+    <link rel="icon" href="https://pixabay.com/de/vectors/zeit-uhrzeit-uhr-zeitanzeige-icon-1606153/" type="https://pixabay.com/de/vectors/zeit-uhrzeit-uhr-zeitanzeige-icon-1606153/">
+    <style>
+        body {
+            background-color: rgb(32, 32, 32);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="clock"></div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+
+            const clockText = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').innerText = clockText;
+        }
+
+        setInterval(updateClock, 1000); // Aktualisiere die Uhrzeit alle 1000 ms (1 Sekunde)
+        updateClock(); // Initialisieren Sie die Uhrzeit beim Laden der Seite
+    </script>
+
+    <script>
+        // Hier kannst du zusätzliches JavaScript hinzufügen, falls nötig
+    </script>
+
+<link rel="manifest" href="https://github.com/fredideni/Clock-Software">
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => console.log('Service Worker registered with scope:', registration.scope))
+            .catch(error => console.error('Service Worker registration failed:', error));
+    }
+</script>
+
+<meta name="mobile-web-app-capable" content="yes">
+
+</body>
+</html>
+
